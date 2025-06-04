@@ -1,4 +1,3 @@
-import Img from "./a.jpg";
 import { Rating } from "@mui/material";
 
 const Product = ({ data }) => {

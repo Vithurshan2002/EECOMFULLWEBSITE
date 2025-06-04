@@ -3,12 +3,11 @@ const express=require('express');
 const mongoose=require('mongoose');
 const produtrotes=require('./routes/Productroute');
 const Authroutes=require('./routes/authroutes');
-<<<<<<< HEAD
-=======
 const Orderroutes=require('./routes/orderroutes');
->>>>>>> bb3829661f1139a462ff9c34306973c4efa7be3c
+const cors=require('cors');
 const cp=require('cookie-parser');
 const app=express();
+app.use(cors());
 app.use(express.json());
 app.use(cp());  // to access cookieproperty
 app.use('/api',produtrotes);

@@ -1,18 +1,10 @@
 const express=require('express');
-<<<<<<< HEAD
-const { addProduct, getSingleProduct, getAllProduct, upDateProduct, deleteProduct, getProductByName } = require('../Controllers/Productcontroller');
-const { userAuthenticate } = require('../middlewares/UserAuthenticatemiddleware');
 const router=express.Router();
-
-router.post('/product/new',addProduct);
-=======
-const { addProduct, getSingleProduct, getAllProduct, upDateProduct, deleteProduct, getProductByName, createReview, getAllReview, deleteReview } = require('../Controllers/Productcontroller');
 const { userAuthenticate, Authorizeroles } = require('../middlewares/UserAuthenticatemiddleware');
-const router=express.Router();
-
+const { addProduct, getSingleProduct, getAllProduct, upDateProduct, deleteProduct, getProductByName, createReview, deleteReview, getAllReview } = require('../Controllers/Productcontroller');
+router.post('/product/new',addProduct);
 router.post('/product/new',userAuthenticate,addProduct);
->>>>>>> bb3829661f1139a462ff9c34306973c4efa7be3c
-router.get('/allproducts',userAuthenticate,getAllProduct);  //two midlewares
+router.get('/allproducts',getAllProduct);  //two midlewares
 router.get('/singleproduct/:id',getSingleProduct);
 router.put('/updateproduct/:id',upDateProduct);
 router.post('/findproduct',getProductByName);

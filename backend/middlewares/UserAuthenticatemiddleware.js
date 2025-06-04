@@ -21,8 +21,6 @@ exports.userAuthenticate = async (req, res, next) => {
     res.status(500).json({ message: err.message });
   }
 };
-<<<<<<< HEAD
-=======
 
 
 // ella routeu ellarum accesspanna mudiyathu so roleke etpa kuripida akkalmadummaccess panna vaika oru route create panuram
@@ -34,4 +32,4 @@ exports.Authorizeroles=(...roles)=>{  //rolesa parameterla anupuvam
             next(); // roles poruthinamadume next middlewarea call panuram so adutha midileware run akum..iladil ithu adutha middilware run akathu...so entha rouuke athirize panna nikuramo athuku munnuku middlwwarea add panuvam
         }
 }
->>>>>>> bb3829661f1139a462ff9c34306973c4efa7be3c
+
