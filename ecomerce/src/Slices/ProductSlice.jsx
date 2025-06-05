@@ -4,33 +4,33 @@ const initialState = {
   loading:false,
 };
 
-const productsSlice = createSlice({
-  name: "products",
+const productSlice = createSlice({
+  name: "product",
   initialState: initialState,
   reducers:{
-    productsRequest:(state,action)=>{
+    productRequest:(state,action)=>{
         return{
               loading:true
         }
     },
-    productsSuccess:(state,action)=>{
+    productSuccess:(state,action)=>{
       return{
         loading:false,
-        products:action.payload
+        product:action.payload
       }
     },
-    productsFail:(state,action)=>{
+    productFail:(state,action)=>{
      return{
         loading:false,
-        products:action.payload
+        product:action.payload
     }},
 }});
 
 
-export const{productsRequest,productsSuccess,productsFail}=productsSlice.actions;
+export const{productRequest,productSuccess,productFail}=productSlice.actions;
 
 
-export default productsSlice.reducer;
+export default productSlice.reducer;
 
 
 

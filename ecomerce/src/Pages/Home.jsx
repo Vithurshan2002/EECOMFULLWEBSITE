@@ -2,17 +2,23 @@ import React, { useEffect } from "react";
 import Product from "./Product";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import getProducts from "../actions/ProductActions";
+ import { toast } from 'react-toastify';
+import getProducts from "../actions/ProductsActions";
 import Lorder from "./Lorder";
 const Home = () => {
   const dispatch = useDispatch();
+
+  const { products, loading, error } = useSelector(
+    (state) => state.productsState
+  );
+
   useEffect(() => {
+    if(error){
+     return  toast.error(error, {position: "top-center",autoClose: 5000,hideProgressBar: false,closeOnClick: false,pauseOnHover: true,draggable: true,progress: undefined,theme: "colored"});
+    }
     getProducts(dispatch);
-  }, []);
+  }, [error]);
 
-  const { products, loading } = useSelector((state) => state.productsState);
-
-  
   return (
     <div>
       {loading ? (

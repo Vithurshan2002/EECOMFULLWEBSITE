@@ -1,4 +1,5 @@
 import { Rating } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Product = ({ data }) => {
 
@@ -20,9 +21,9 @@ const Product = ({ data }) => {
         <p className="text-xs">({data.numOfReviews} Reviews)</p>
       </div>
       <p className="font-bold text-4xl">${data.price}</p>
-      <button className="bg-yellow-300 rounded-2xl font-bold text-white my-5 hover:cursor-pointer hover:bg-yellow-200 ">
+     <Link to={`/product/${data._id}`}> <button  className="bg-yellow-300 rounded-2xl font-bold text-white my-5 hover:cursor-pointer hover:bg-yellow-200 ">
         View Details
-      </button>
+      </button></Link>
     </div>
   );
 };

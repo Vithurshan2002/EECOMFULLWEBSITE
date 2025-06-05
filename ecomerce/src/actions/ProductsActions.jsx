@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { productsFail, productsRequest, productsSuccess } from "../Slices/ProductSlice";
+import { productsFail, productsRequest, productsSuccess } from "../Slices/ProductsSlice";
 const getProducts = async (dispatch) => {
   try {
     dispatch(productsRequest())
