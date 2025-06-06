@@ -5,6 +5,7 @@ import Navbar from "./Pages/Navbar";
 import { ToastContainer } from "react-toastify";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProductDeatil from "./Pages/ProductDeatil";
+import SearchItems from "./Pages/SearchItems";
 function App() {
   return (
     <>
@@ -25,6 +26,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDeatil />} />
+          <Route path="/search/:keyword" element={<SearchItems/>}/>
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -51,8 +51,9 @@ const ProductDeatil = () => {
               defaultValue={product.ratings}
               precision={0.5}
               readOnly
+              className=" -z-10"
             />
-              <div> ({product.numOfReviews})</div>
+              <div> ({product.numOfReviews} Reviews)</div>
             </div>
             <h1 className="py-5 text-3xl font-bold">${product.price}</h1>
             <div className="py-2 flex gap-2">

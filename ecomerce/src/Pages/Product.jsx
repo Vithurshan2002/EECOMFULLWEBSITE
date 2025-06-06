@@ -21,7 +21,7 @@ const Product = ({ data }) => {
         <p className="text-xs">({data.numOfReviews} Reviews)</p>
       </div>
       <p className="font-bold text-4xl">${data.price}</p>
-     <Link to={`/product/${data._id}`}> <button  className="bg-yellow-300 rounded-2xl font-bold text-white my-5 hover:cursor-pointer hover:bg-yellow-200 ">
+     <Link to={`/product/${data._id}`}> <button  className="bg-yellow-300 rounded-2xl font-bold text-white my-5 hover:cursor-pointer hover:bg-yellow-200 px-2">
         View Details
       </button></Link>
     </div>
