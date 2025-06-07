@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProductDeatil from "./Pages/ProductDeatil";
 import SearchItems from "./Pages/SearchItems";
 import Login from "./Pages/user/Login";
+import Register from "./Pages/user/Register";
 
 function App() {
   return (
@@ -29,7 +30,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDeatil />} />
           <Route path="/search/:keyword" element={<SearchItems />} />
-          <Route path="/login" element={<Login/>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
         <Footer />
       </BrowserRouter>

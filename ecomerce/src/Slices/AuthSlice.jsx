@@ -34,10 +34,29 @@ const AuthSlice = createSlice({
        isAuthenticated:false,
        error:null
     }},
+     RegisterRequest:(state,action)=>{
+        return{
+              loading:true,
+               isRegisterd:false
+        }
+    },
+    RegisterSuccess:(state,action)=>{
+      return{
+        loading:false,
+        isRegisterd:true,
+        user:action.payload
+      }
+    },
+    RegisterFail:(state,action)=>{
+     return{
+        loading:false,
+       isRegisterd:false,
+       error:action.payload
+    }},
 }});
 
 
-export const{LoginRequest,LoginSuccess,LoginFail,clearError}=AuthSlice.actions;
+export const{LoginRequest,LoginSuccess,LoginFail,clearError,RegisterRequest,RegisterSuccess,RegisterFail}=AuthSlice.actions;
 
 
 export default AuthSlice.reducer;

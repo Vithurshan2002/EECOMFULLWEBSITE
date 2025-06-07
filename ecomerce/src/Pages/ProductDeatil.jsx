@@ -1,5 +1,5 @@
 import { Rating } from "@mui/material";
-import Img from "./a.jpg";
+import Img1 from '../../public/images/products/head.jpg'
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
@@ -34,12 +34,12 @@ const ProductDeatil = () => {
       {loading ? (
         <Lorder />
       ) : (
-        <div className="flex pb-10 pt-35 flex-col md:flex-row">
+        <div className="flex pb-10 md:pt-30 pt-40 justify-center flex-col md:flex-row  my-10">
           <img
-            src={Img}
+            src={Img1}
             alt="no image"
-            className="border flex-1 md:m-40 m-15 md:h-100 h-50"
-          />
+            className="border flex-1 md:m-40 m-15 md:h-100 h-50 w-80"
+          /> 
           <div className="flex-1 me-20 mx-20">
             <h1 className="md:text-4xl text-2xl py-5">
              {product.name}
