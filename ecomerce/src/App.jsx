@@ -6,6 +6,8 @@ import { ToastContainer } from "react-toastify";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProductDeatil from "./Pages/ProductDeatil";
 import SearchItems from "./Pages/SearchItems";
+import Login from "./Pages/user/Login";
+
 function App() {
   return (
     <>
@@ -26,7 +28,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDeatil />} />
-          <Route path="/search/:keyword" element={<SearchItems/>}/>
+          <Route path="/search/:keyword" element={<SearchItems />} />
+          <Route path="/login" element={<Login/>} />
         </Routes>
         <Footer />
       </BrowserRouter>

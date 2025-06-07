@@ -30,7 +30,7 @@ const SearchItems = () => {
         <div className="md:mt-35 mt-50 mb-40">
           <h1 className="font-semibold text-4xl">Search Products</h1>
           <div className="grid  md:grid-cols-3 gap-5 px-10 pt-10">
-            {products.length>0?
+            {products && products.length > 0 ?
               products.map((data, key) => {
                 return <Product data={data} key={key} />;
               }):<NotAvalable/>}
