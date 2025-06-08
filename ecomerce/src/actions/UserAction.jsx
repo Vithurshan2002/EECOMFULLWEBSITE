@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { LoginRequest, LoginSuccess, LoginFail ,clearError, RegisterRequest, RegisterSuccess, RegisterFail} from "../Slices/AuthSlice";
+import { LoginRequest, LoginSuccess, LoginFail ,clearError, RegisterRequest, RegisterSuccess, RegisterFail, LoadUserRequest, LoadUserSuccess, LoadUserFail, LogoutUserSuccess, LogoutUserFail} from "../Slices/AuthSlice";
 import { Avatar } from "@mui/material";
 export const getLogin = (email,password) => async (dispatch) => {
   try {
@@ -30,3 +30,27 @@ export const getRegister = (name,email,password) => async (dispatch) => {
   }
 };
  
+
+export const userDataLoader =  async (dispatch) => {
+  try {
+    dispatch(LoadUserRequest())
+    const {data}= await axios.get("http://localhost:3000/api/getuserdetail");
+    console.log(data.message);
+    dispatch(LoadUserSuccess(data.message))
+  } catch (error) {
+    dispatch(LoadUserFail(error.response.data.message));
+    console.log(error);
+  }
+};
+
+export const userLogout = ()=> async (dispatch) => {
+  try {
+     await axios.get("http://localhost:3000/api/logout");
+    dispatch(LogoutUserSuccess())
+    
+  } catch (err) {
+    dispatch(LogoutUserFail());
+    console.log(err);
+
+  }
+};

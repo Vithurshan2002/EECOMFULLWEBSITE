@@ -3,7 +3,7 @@ const router=express.Router();
 const { userAuthenticate, Authorizeroles } = require('../middlewares/UserAuthenticatemiddleware');
 const { addProduct, getSingleProduct, getAllProduct, upDateProduct, deleteProduct, getProductByName, createReview, deleteReview, getAllReview } = require('../Controllers/Productcontroller');
 router.post('/product/new',addProduct);
-router.post('/product/new',userAuthenticate,addProduct);
+router.post('/product/new',userAuthenticate,userAuthenticate,addProduct);
 router.get('/allproducts',getAllProduct);  //two midlewares
 router.get('/singleproduct/:id',getSingleProduct);
 router.put('/updateproduct/:id',upDateProduct);

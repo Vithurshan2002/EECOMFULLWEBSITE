@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import  { getLogin , ClearAuthError } from "../../actions/UserAction";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const Login = () => {
@@ -77,9 +77,9 @@ const Login = () => {
           >
             Login
           </button>
-          <p className=" mt-4 text-xs font-bold text-right underline hover:cursor-pointer hover:text-red-400">
+        <Link to={'/register'}>  <p className=" mt-4 text-xs font-bold text-right underline hover:cursor-pointer hover:text-red-400">
             New User?
-          </p>
+          </p></Link>
         </form>
       </div>
     </div>

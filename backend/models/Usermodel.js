@@ -6,17 +6,17 @@ const crypto=require('crypto');
 const userScehma = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "please Enter the name"],
+    required: [true, "Empty Filed"],
   },
   email: {
     type: String,
-    required: [true, "please Enter email"],
+    required: [true, "Empty Filed"],
     unique: true, //to identify uniquly to set primary key
     validate: [validator.isEmail, "Enter the valid email"],
   },
   password: {
     type: String,
-    required: [true, "please Enter the password"],
+    required: [true, "Empty Filed"],
     maxLength: [6, "password cannot exceed 6 chacters"],
     select:false // oru userin datava query pani edukum pothu in tha password field madum varama seiram.because password is a most important..so passwordaum peravendumenn select(+password) enra chain method a use pani than edukanum
   },

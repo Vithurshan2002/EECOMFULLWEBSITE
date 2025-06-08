@@ -8,8 +8,17 @@ import ProductDeatil from "./Pages/ProductDeatil";
 import SearchItems from "./Pages/SearchItems";
 import Login from "./Pages/user/Login";
 import Register from "./Pages/user/Register";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { userDataLoader } from "./actions/UserAction";
 
 function App() {
+  //why userloade date call here becase app.jsx is amin file..so ella payilukumpothuva kudukanum enpatha l .app.jsx thne inku main file so athuku kudutham
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(userDataLoader)
+  });
+
   return (
     <>
       <BrowserRouter>

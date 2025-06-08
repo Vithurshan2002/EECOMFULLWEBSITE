@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { userLogout } from "../actions/UserAction";
 const Navbar = () => {
   const navigate = useNavigate();
   const [keyword, setkeyword] = useState("");
   const searchHandler = (e) => {
     e.preventDefault();
     navigate(`/search/${keyword}`);
-   /*  setkeyword(""); */
+    /*  setkeyword(""); */
+  };
+
+  const { isAuthenticated, loading } = useSelector((state) => state.AuthState);
+
+  const dispatch = useDispatch();
+  const logout =async () => {
+  await dispatch(userLogout());
+   navigate('/login')
   };
 
   return (
@@ -37,9 +47,22 @@ const Navbar = () => {
         </div>
       </form>
       <div className="flex space-x-4  items-center  font-serif">
-       <Link to={'/login'}> <button className="bg-green-400 py-1 px-3 font-bold text-white rounded-xl  hover:cursor-pointer hover:bg-green-300">
-          Login
-        </button></Link>
+        {isAuthenticated ? (
+          <p
+            className="bg-red-400 py-1 px-3 font-bold text-white rounded-xl  hover:cursor-pointer hover:bg-red-200"
+            onClick={logout}
+          >
+            Log Out
+          </p>
+        ) : (
+          <Link to={"/login"}>
+            {" "}
+            <button className="bg-green-400 py-1 px-3 font-bold text-white rounded-xl  hover:cursor-pointer hover:bg-green-300">
+              Login
+            </button>
+          </Link>
+        )}
+
         <div className="flex gap-2 items-center text-white">
           <p className="font-bold">Cart</p>
           <p className=" p-1 bg-green-500">1</p>
