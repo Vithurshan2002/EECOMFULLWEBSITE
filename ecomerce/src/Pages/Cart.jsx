@@ -71,9 +71,9 @@ const Cart = () => {
           </div>
           <div className="flex justify-center py-5 ">
             {" "}
-            <button className="bg-orange-400 w-1/2 hover:cursor-pointer hover:bg-green-200 hover:text-black font-semibold  rounded-full animate-pulse text-white border-2">
+           <Link to={'/shipping'}> <button className="bg-orange-400   hover:cursor-pointer px-2 hover:bg-green-200 hover:text-black font-semibold  rounded-full animate-pulse text-white border-2">
               CheckOut
-            </button>
+            </button></Link>
           </div>
         </div>
       </div>

@@ -15,6 +15,7 @@ import UserProfile from "./Pages/user/UserProfile";
 import ProtectedRoute from "./Pages/routes/ProtectedRoute";
 import UpdatePassword from "./Pages/user/UpdatePassword";
 import Cart from "./Pages/Cart";
+import Shipping from "./Pages/Shipping";
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
           />
           <Route path="/updatepassword" element={<ProtectedRoute><UpdatePassword/></ProtectedRoute>} />
           <Route path="/addtocart" element={<ProtectedRoute><Cart/></ProtectedRoute>}/>
+           <Route path="/shipping" element={<ProtectedRoute><Shipping/></ProtectedRoute>}/>
         </Routes>
         <Footer />
       </BrowserRouter>
