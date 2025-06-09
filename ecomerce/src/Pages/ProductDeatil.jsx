@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import getProduct from "../actions/ProductAction";
 import Lorder from "./Lorder";
+import { addCartItem } from "../actions/CartAction";
 const ProductDeatil = () => {
-  const [count, setcount] = useState(0);
+  const [count, setcount] = useState(1);
   const { id } = useParams();
   const { product, error, loading } = useSelector(
     (state) => state.productState
@@ -29,6 +30,10 @@ const ProductDeatil = () => {
     Dispatch(getProduct(id));
   }, [error]);
 
+
+  const Addtocart=()=>{
+    Dispatch(addCartItem(product._id,count))
+  }
   return (
     <div>
       {loading ? (
@@ -81,7 +86,7 @@ const ProductDeatil = () => {
                   +
                 </div>
               </div>
-              <button className="bg-green-400 hover:bg-green-300  p-2 rounded-full hover:cursor-pointer font-bold">
+              <button onClick={Addtocart} className="bg-green-400 hover:bg-green-300  p-2 rounded-full hover:cursor-pointer font-bold">
                 Add to Cart
               </button>
             </div>
@@ -91,7 +96,7 @@ const ProductDeatil = () => {
              {product.description}
             </p>
             <p className="py-3">Sold by : {product.seller}</p>
-            <button className="bg-orange-400 text-white hover:bg-orange-300 p-2 rounded-full hover:cursor-pointer font-bold">
+            <button  className="bg-orange-400 text-white hover:bg-orange-300 p-2 rounded-full hover:cursor-pointer font-bold">
               Submit Your Review
             </button>
           </div>

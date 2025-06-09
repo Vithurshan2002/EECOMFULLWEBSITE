@@ -14,6 +14,8 @@ import { userDataLoader } from "./actions/UserAction";
 import UserProfile from "./Pages/user/UserProfile";
 import ProtectedRoute from "./Pages/routes/ProtectedRoute";
 import UpdatePassword from "./Pages/user/UpdatePassword";
+import Cart from "./Pages/Cart";
+
 
 function App() {
   //why userloade date call here becase app.jsx is amin file..so ella payilukumpothuva kudukanum enpatha l .app.jsx thne inku main file so athuku kudutham
@@ -53,6 +55,7 @@ function App() {
             }
           />
           <Route path="/updatepassword" element={<ProtectedRoute><UpdatePassword/></ProtectedRoute>} />
+          <Route path="/addtocart" element={<ProtectedRoute><Cart/></ProtectedRoute>}/>
         </Routes>
         <Footer />
       </BrowserRouter>

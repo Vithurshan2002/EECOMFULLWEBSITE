@@ -29,6 +29,7 @@ const Navbar = () => {
     }
   };
 
+  const { items } = useSelector((state) => state.CartState);
   const { isAuthenticated, loading } = useSelector((state) => state.AuthState);
 
   const dispatch = useDispatch();
@@ -82,7 +83,7 @@ const Navbar = () => {
             <div
               tabIndex={0}
               role="button"
-              className="btn border-0  bg-blue-500 text-white hover:bg-blue-300 "
+              className="btn  border-0  bg-blue-500 text-white hover:bg-blue-300 "
             >
               {user.name}{" "}
               {
@@ -114,8 +115,8 @@ const Navbar = () => {
         )}
 
         <div className="flex gap-2 items-center text-white">
-          <p className="font-bold">Cart</p>
-          <p className=" p-1 bg-green-500">1</p>
+        <Link to={'/addtocart'}>  <p className="font-bold">Cart</p></Link>
+          <p className=" p-1 bg-green-500">{items.length}</p>
         </div>
       </div>
     </div>
