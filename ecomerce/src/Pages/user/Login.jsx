@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
-import  { getLogin , ClearAuthError } from "../../actions/UserAction";
+import { getLogin, ClearAuthError } from "../../actions/UserAction";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 
-
 const Login = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-  const { loading, error, isAuthenticated} = useSelector(
+  const { loading, error, isAuthenticated } = useSelector(
     (state) => state.AuthState
   );
   const dispatch = useDispatch();
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -22,7 +21,7 @@ const Login = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-     navigate('/')
+      navigate("/");
     }
     if (error) {
       toast(error, {
@@ -34,12 +33,14 @@ const Login = () => {
         draggable: true,
         progress: undefined,
         theme: "colored",
-        type:'error',
-        onOpen:()=>{dispatch(ClearAuthError())}
+        type: "error",
+        onOpen: () => {
+          dispatch(ClearAuthError());
+        },
       });
-      return
+      return;
     }
-  }, [error, isAuthenticated,dispatch]);
+  }, [error, isAuthenticated, dispatch,navigate]);
 
   return (
     <div className="flex justify-center items-center h-screen bg- bg-gray-200">
@@ -77,9 +78,12 @@ const Login = () => {
           >
             Login
           </button>
-        <Link to={'/register'}>  <p className=" mt-4 text-xs font-bold text-right underline hover:cursor-pointer hover:text-red-400">
-            New User?
-          </p></Link>
+          <Link to={"/register"}>
+            {" "}
+            <p className=" mt-4 text-xs font-bold text-right underline hover:cursor-pointer hover:text-red-400">
+              New User?
+            </p>
+          </Link>
         </form>
       </div>
     </div>

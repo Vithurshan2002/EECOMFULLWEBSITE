@@ -76,7 +76,7 @@ const AuthSlice = createSlice({
         error: action.payload,
       };
     },
-     LogoutUserSuccess: (state, action) => {
+    LogoutUserSuccess: (state, action) => {
       return {
         loading: false,
         isAuthenticated: false,

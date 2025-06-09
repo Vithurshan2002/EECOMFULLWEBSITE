@@ -12,12 +12,14 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { userDataLoader } from "./actions/UserAction";
 import UserProfile from "./Pages/user/UserProfile";
+import ProtectedRoute from "./Pages/routes/ProtectedRoute";
+import UpdatePassword from "./Pages/user/UpdatePassword";
 
 function App() {
   //why userloade date call here becase app.jsx is amin file..so ella payilukumpothuva kudukanum enpatha l .app.jsx thne inku main file so athuku kudutham
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(userDataLoader)
+    dispatch(userDataLoader);
   });
 
   return (
@@ -37,12 +39,20 @@ function App() {
           theme="colored"
         />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<ProtectedRoute><Home/></ProtectedRoute>} />
           <Route path="/product/:id" element={<ProductDeatil />} />
           <Route path="/search/:keyword" element={<SearchItems />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-           <Route path="/userProfile" element={<UserProfile />} />
+          <Route
+            path="/userProfile"
+            element={
+              <ProtectedRoute>
+                <UserProfile />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/updatepassword" element={<ProtectedRoute><UpdatePassword/></ProtectedRoute>} />
         </Routes>
         <Footer />
       </BrowserRouter>
