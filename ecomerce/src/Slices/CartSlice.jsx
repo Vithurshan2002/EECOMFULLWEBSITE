@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   items: JSON.parse(localStorage.getItem("cartItems") || "[]"),
   loading: false,
+  shippingInfor:JSON.parse(localStorage.getItem("shippingInfor") || "{}")
 };
-
 const cartSlice = createSlice({
   name: "cart",
   initialState: initialState,
@@ -58,12 +58,20 @@ const cartSlice = createSlice({
         return {
             ...state,items:filterItems
         }
+    },
+    saveShippingInfor:(state,action)=>{
+        localStorage.setItem("shippingInfor", JSON.stringify(action.payload));
+        return {
+          ...state,
+          shippingInfor:action.payload
+
+        }
     }
 
   },
 });
 
-export const { addcartitemRequest, addcartitemsSuccess,decreaseQty,increaseQty,removeItemFRomcart} = cartSlice.actions;
+export const { addcartitemRequest, addcartitemsSuccess,decreaseQty,increaseQty,removeItemFRomcart,saveShippingInfor} = cartSlice.actions;
 
 export default cartSlice.reducer;
 addcartitemRequest;

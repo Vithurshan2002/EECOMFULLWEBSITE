@@ -16,6 +16,8 @@ import ProtectedRoute from "./Pages/routes/ProtectedRoute";
 import UpdatePassword from "./Pages/user/UpdatePassword";
 import Cart from "./Pages/Cart";
 import Shipping from "./Pages/Shipping";
+import ConfirmOrder from "./Pages/ConfirmOrder";
+import OrderState from "./Pages/OrderState";
 
 
 function App() {
@@ -58,6 +60,8 @@ function App() {
           <Route path="/updatepassword" element={<ProtectedRoute><UpdatePassword/></ProtectedRoute>} />
           <Route path="/addtocart" element={<ProtectedRoute><Cart/></ProtectedRoute>}/>
            <Route path="/shipping" element={<ProtectedRoute><Shipping/></ProtectedRoute>}/>
+        <Route path="/orderconfirmation" element={<ProtectedRoute><ConfirmOrder/></ProtectedRoute>}/>
+         <Route path="/orderSuccess" element={<ProtectedRoute><OrderState/></ProtectedRoute>}/>
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -41,7 +41,7 @@ const Navbar = () => {
   const { user } = useSelector((state) => state.AuthState);
 
   return (
-    <div className="bg-black flex flex-col md:flex-row justify-between items-center py-4 px-5 fixed top-0 w-full">
+    <div className="bg-black flex flex-col md:flex-row justify-between items-center py-4 px-5 fixed top-0 w-full z-2 ">
       {isAuthenticated ? (
         <Link to={"/"}>
           {" "}
@@ -68,7 +68,7 @@ const Navbar = () => {
               setkeyword(e.target.value);
             }}
             className="bg-white outline-0 ps-3 rounded-2xl italic font-semibold overflow-hidden flex-1"
-            placeholder="Enter the Product"
+            placeholder="Search Products"
           />
           <button>
             {

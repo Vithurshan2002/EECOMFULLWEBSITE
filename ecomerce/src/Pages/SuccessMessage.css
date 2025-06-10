@@ -1,0 +1,32 @@
+@keyframes spin-scale {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+.animate-spin-scale {
+  animation: spin-scale 1s ease-in-out forwards;
+}
+
+@keyframes fade-in-delay {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-delay {
+  animation: fade-in-delay 0.6s ease-in forwards;
+  animation-delay: 1s;
+}

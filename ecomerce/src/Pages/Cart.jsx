@@ -7,7 +7,7 @@ const Cart = () => {
    const dispatch= useDispatch()
   const { items } = useSelector((state) => state.CartState);
   return (
-    <div className="bg-gray-200 h-screen md:py-20  py-40">
+    <div className="bg-gray-200 md:py-20  h-screen py-40">
       <p className="text-3xl py-10 px-12">
         Your Cart:<span className="font-bold"> {items.length} Items</span>
       </p>
@@ -20,7 +20,7 @@ const Cart = () => {
               <Fragment key={key}>
                 <div className="flex md:gap-10 gap-2 border-x-black bg-white  items-center justify-center md:p-5 px-3  border-green-600 border-4 rounded shadow-2xl shadow-black">
                   <div className="flex-1 ">
-                    <img src={data.image} alt="no image" className=" h-30 w-full" />
+                    <img src={data.image} alt="no image" className=" h-30 w-fit" />
                   </div>
                 <Link to={`/product/${data.product}`}>  <p className="font-bold md:text-xl flex-1 hover:text-blue-700">
                     {data.name}
@@ -46,7 +46,7 @@ const Cart = () => {
                     </div>
                   </div>
                   <div>
-                    <TiDelete onClick={()=>dispatch(removeItemFRomcart(data.product))} className="text-red-500   hover:cursor-pointer animate-pulse text-3xl transition-all" />
+                    <TiDelete onClick={()=>dispatch(removeItemFRomcart(data.product))} className="text-red-500 -z-50  hover:cursor-pointer animate-pulse text-3xl transition-all" />
                   </div>
                 </div>
               </Fragment>
@@ -66,7 +66,7 @@ const Cart = () => {
           </div>
           <div className="flex justify-around">
             <p className="font-semibold text-xl">Est.Total</p>
-             <p className="font-extrabold">$ {items.reduce((acc,item)=>(acc+item.price*item.quantity),0)}  </p>
+             <p className="font-extrabold">$ {items.reduce((acc,item)=>(acc+item.price*item.quantity),0).toFixed(2)}  </p>
             
           </div>
           <div className="flex justify-center py-5 ">
