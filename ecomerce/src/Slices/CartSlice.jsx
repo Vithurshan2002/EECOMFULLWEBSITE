@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   items: JSON.parse(localStorage.getItem("cartItems") || "[]"),
   loading: false,
-  shippingInfor:JSON.parse(localStorage.getItem("shippingInfor") || "{}")
+  shippingInfor: JSON.parse(localStorage.getItem("shippingInfor") || "{}"),
 };
 const cartSlice = createSlice({
   name: "cart",
@@ -44,34 +44,50 @@ const cartSlice = createSlice({
     decreaseQty: (state, action) => {
       state.items = state.items.map((item) => {
         if (item.product == action.payload) {
-          item.quantity = item.quantity- 1;
+          item.quantity = item.quantity - 1;
         }
         return item;
       });
       localStorage.setItem("cartItems", JSON.stringify(state.items));
     },
-    removeItemFRomcart:(state,action)=>{
-        const filterItems=state.items.filter(item =>{
-            return item.product !==action.payload
-        })
-        localStorage.setItem("cartItems", JSON.stringify(filterItems));
-        return {
-            ...state,items:filterItems
-        }
+    removeItemFRomcart: (state, action) => {
+      const filterItems = state.items.filter((item) => {
+        return item.product !== action.payload;
+      });
+      localStorage.setItem("cartItems", JSON.stringify(filterItems));
+      return {
+        ...state,
+        items: filterItems,
+      };
     },
-    saveShippingInfor:(state,action)=>{
-        localStorage.setItem("shippingInfor", JSON.stringify(action.payload));
-        return {
-          ...state,
-          shippingInfor:action.payload
-
-        }
-    }
-
+    saveShippingInfor: (state, action) => {
+      localStorage.setItem("shippingInfor", JSON.stringify(action.payload));
+      return {
+        ...state,
+        shippingInfor: action.payload,
+      };
+    },
+    OrderComplteed: (state, action) => {
+      localStorage.removeItem("shippingInfor");
+      localStorage.removeItem("cartItems");
+      return {
+        items: [],
+        loading: false,
+        shippingInfor: [],
+      };
+    },
   },
 });
 
-export const { addcartitemRequest, addcartitemsSuccess,decreaseQty,increaseQty,removeItemFRomcart,saveShippingInfor} = cartSlice.actions;
+export const {
+  addcartitemRequest,
+  addcartitemsSuccess,
+  decreaseQty,
+  increaseQty,
+  removeItemFRomcart,
+  saveShippingInfor,
+  OrderComplteed
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
 addcartitemRequest;

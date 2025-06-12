@@ -1,12 +1,14 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { OrderComplteed } from "../Slices/CartSlice";
 
 const ConfirmOrder = () => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
+  const orderInfor = JSON.parse(sessionStorage.getItem("orderinfor"));
+  const { user } = useSelector((state) => state.AuthState);
   const { items } = useSelector((state) => state.CartState);
   const { shippingInfor } = useSelector((state) => state.CartState);
-  const { user } = useSelector((state) => state.AuthState);
 
   const allitemsprice = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -23,8 +25,9 @@ const ConfirmOrder = () => {
       tax,
       total,
     };
-    sessionStorage.setItem('orderinfor',JSON.stringify(data))
-     navigate('/orderSuccess');
+    sessionStorage.setItem("orderinfor", JSON.stringify(data));
+    dispatch(OrderComplteed()); //to claen storage in  application tab in inspect
+    navigate("/orderSuccess");
   };
 
   return (
@@ -95,7 +98,10 @@ const ConfirmOrder = () => {
           </div>
         </div>
         <div className="flex justify-center">
-          <button onClick={proceedConfirmorder} className="bg-orange-400 p-2 rounded-full text-white font-extrabold mt-5 hover:bg-orange-100 cursor-pointer">
+          <button
+            onClick={proceedConfirmorder}
+            className="bg-orange-400 p-2 rounded-full text-white font-extrabold mt-5 hover:bg-orange-100 cursor-pointer"
+          >
             Confirm Order
           </button>
         </div>
