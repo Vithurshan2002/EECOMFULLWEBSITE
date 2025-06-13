@@ -4,7 +4,7 @@ import { countries } from "countries-list";
 import { saveShippingInfor } from "../Slices/CartSlice";
 import { useNavigate } from "react-router-dom";
 const Shipping = () => {
-  const { shippingInfor } = useSelector((state) => state.CartState);
+  const { shippingInfor={} } = useSelector((state) => state.CartState);
   const [city, setcity] = useState(shippingInfor.city);
   const [address, setaddress] = useState(shippingInfor.address);
   const [phoneNo, setPhoneNo] = useState(shippingInfor.phoneNo);

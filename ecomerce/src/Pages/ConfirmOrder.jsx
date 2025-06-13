@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { OrderComplteed } from "../Slices/CartSlice";
 
+
 const ConfirmOrder = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -9,7 +10,6 @@ const ConfirmOrder = () => {
   const { user } = useSelector((state) => state.AuthState);
   const { items } = useSelector((state) => state.CartState);
   const { shippingInfor } = useSelector((state) => state.CartState);
-
   const allitemsprice = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -17,6 +17,8 @@ const ConfirmOrder = () => {
   const shipping = allitemsprice > 200 ? 0 : 25;
   const tax = Number(0.05 * allitemsprice);
   const total = Number(allitemsprice + shipping + tax).toFixed(2);
+
+
 
   const proceedConfirmorder = () => {
     const data = {
@@ -26,9 +28,13 @@ const ConfirmOrder = () => {
       total,
     };
     sessionStorage.setItem("orderinfor", JSON.stringify(data));
+    // i have to add order so i carea a function in future
+   
     dispatch(OrderComplteed()); //to claen storage in  application tab in inspect
     navigate("/orderSuccess");
   };
+
+
 
   return (
     <div className=" md:py-20 py-50   flex flex-col md:flex-row  md:space-x-8">

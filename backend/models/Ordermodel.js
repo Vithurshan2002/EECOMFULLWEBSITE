@@ -21,7 +21,7 @@ const orderschema = new mongoose.Schema({
     postalCode: {
       type: String,
       required: true,
-    },
+    }
   },
   user: {
     type: mongoose.SchemaTypes.ObjectId,
